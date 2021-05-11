@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>RREF Calculator</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <script src="reducer.js"> </script>
+  </head>
+
+  <h1>4x4 Matrix Reducer</h1>
+
+  <body>
+    <p title= "background information">
+      To reduce your matrix into Reduced Row Echelon Form (RREF),
+      simply input your values below!
+    </p>
+
+    <div id="matrix-inputting">
+      <form id="matrix-inputs">
+
+        <div id="raw-values">
+          <input type="text" id="e1x1"/>
+          <input type="text" id="e1x2"/>
+          <input type="text" id="e1x3"/>
+          <input type="text" id="e1x4"/>
+          <br>
+          <input type="text" id="e2x1"/>
+          <input type="text" id="e2x2"/>
+          <input type="text" id="e2x3"/>
+          <input type="text" id="e2x4"/>
+          <br>
+          <input type="text" id="e3x1"/>
+          <input type="text" id="e3x2"/>
+          <input type="text" id="e3x3"/>
+          <input type="text" id="e3x4"/>
+          <br>
+          <input type="text" id="e4x1"/>
+          <input type="text" id="e4x2"/>
+          <input type="text" id="e4x3"/>
+          <input type="text" id="e4x4"/>
+          <br>
+        </div>
+
+        <div id="buttons">
+          <button onclick="reduceMatrix();">Reduce Matrix</button>
+          <br>
+          <input type="reset" name="reset numbers"/>
+        </div>
+      </form>
+
+    </div>
+  </body>
+</html>
