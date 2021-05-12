@@ -10,7 +10,21 @@ function reduceMatrix() {
     }
   }
 
-
+  printMatrix(matrix);
 }
 
-function reduceAlgorithm
+function printMatrix(matrix) {
+  var body = document.getElementsByTagName("body");
+  var table = document.createElement("table");
+
+  for (var i = 0; i < 4; ++i) {
+    var tr = document.createElement("tr");
+    for (var j = 0; j < 4; ++j) {
+      var td = document.createElement("td");
+      td.appendChild(document.createTextNode(matrix[i+j]));
+      tr.appendChild(td);
+    }
+    table.appendChild(tr);
+  }
+  body.appendChild(table);
+}
