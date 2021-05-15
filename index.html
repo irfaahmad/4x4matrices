@@ -3,8 +3,8 @@
 <html>
 
   <head>
-    <title>RREF Calculator</title>
     <meta charset="UTF-8">
+    <title>RREF Calculator</title>
     <link rel="stylesheet" href="styles.css">
     <script src="reducer.js"> </script>
   </head>
@@ -17,8 +17,8 @@
       simply input your values below!
     </p>
 
-    <div id="matrix-inputting">
-      <form id="matrix-inputs">
+    <div id="matrixInputting">
+      <form id="matrixInputs" method="post">
 
         <div id="raw-values">
           <input type="text" id="e1x1"/>
@@ -43,11 +43,15 @@
           <br>
         </div>
 
-        <div id="buttons">
-          <button onclick="reduceMatrix();">Reduce Matrix</button>
+        <div id="matrixInputted">
+          <button type="submit" value="submit" onclick="return reduceMatrix();">
+            Reduce Matrix
+          </button>
           <br>
           <input type="reset" name="reset numbers"/>
         </div>
+
+        <div id="table"> </div>
       </form>
 
     </div>
