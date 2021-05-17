@@ -1,16 +1,15 @@
 // file in which the reducing algorithm takes place!
+const rowNum = 4;
+const colNum = 4;
 
 function reduceMatrix() {
   var matrix = [];
-  for (var i = 0; i < 4; ++i) {
+  for (var i = 0; i < rowNum; ++i) {
     matrix[i] = [];
-    for (var j = 0; j < 4; ++j) {
+    for (var j = 0; j < colNum; ++j) {
       var input = "e" + (i+1) + "x" + (j+1);
       var value = document.getElementById(input).value;
-      if (value == "") {/*
-        while (matrix.hasChildNodes()) {
-          matrix.removeChild(matrix.lastChild);
-        }*/
+      if (value == "") {
         alert("Please only enter numbers");
         return;
       } else {
@@ -18,22 +17,63 @@ function reduceMatrix() {
       }
     }
   }
+
   console.log(matrix);
+  matrix = reduction(matrix);
   printMatrix(matrix);
   return false;
 }
 
-function gaussJordanReduction(matrix) {
+function reduction(matrix) {
+  console.log(matrix);
+  var curx = 0;
+  for (var r = 0; r < rowNum; ++r) {
+    if (colNum <= curx) {
+      return matrix;
+    }
+    var row = r;
+    while (matrix[row][curx] == 0) {
+      ++row;
+      if (rowNum == row) {
+        row = r;
+        ++curx;
+        if (colNum == curx) {
+          return;
+        }
+      }
+    }
+    var temp = matrix[row];
+    matrix[row] = matrix[r];
+    matrix[r] = temp;
 
+    var curv = matrix[r][curx];
+    for (var j = 0; j < colNum; ++j) {
+      matrix[r][j] /= curv;
+    }
+
+    for (var i = 0; i < rowNum; ++i) {
+      if (i == r) continue;
+      curv = matrix[i][curx];
+      for (var j = 0; j < colNum; ++j) {
+        matrix[i][j] -= curv * matrix[r][j];
+      }
+    }
+    ++curx;
+  }
+  return matrix;
 }
 
 function printMatrix(matrix) {
-  var body = document.getElementById("matrixInputted");
+  var body = document.getElementById("matrixTable");
   var table = document.createElement("table");
 
-  for (var i = 0; i < 4; ++i) {
+  while (body.hasChildNodes()) {
+    body.removeChild(body.lastChild);
+  }
+
+  for (var i = 0; i < rowNum; ++i) {
     var tr = document.createElement("tr");
-    for (var j = 0; j < 4; ++j) {
+    for (var j = 0; j < colNum; ++j) {
       var td = document.createElement("td");
       var cell = document.createTextNode(matrix[i][j]);
       td.appendChild(cell);
