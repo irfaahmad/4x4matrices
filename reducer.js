@@ -18,14 +18,13 @@ function reduceMatrix() {
     }
   }
 
-  console.log(matrix);
   matrix = reduction(matrix);
+  console.log(matrix);
   printMatrix(matrix);
   return false;
 }
 
 function reduction(matrix) {
-  console.log(matrix);
   var curx = 0;
   for (var r = 0; r < rowNum; ++r) {
     if (colNum <= curx) {
@@ -38,7 +37,7 @@ function reduction(matrix) {
         row = r;
         ++curx;
         if (colNum == curx) {
-          return;
+          return matrix;
         }
       }
     }
@@ -75,6 +74,7 @@ function printMatrix(matrix) {
     var tr = document.createElement("tr");
     for (var j = 0; j < colNum; ++j) {
       var td = document.createElement("td");
+      console.log(matrix[i][j]);
       var cell = document.createTextNode(matrix[i][j]);
       td.appendChild(cell);
       tr.appendChild(td);
